@@ -1,6 +1,6 @@
 // Import Dependencies
 const express = require('express')
-const Example = require('../models/example')
+const Stock = require('../models/stock')
 
 // Create router
 const router = express.Router()
@@ -22,6 +22,20 @@ router.use((req, res, next) => {
 // Routes
 
 // index ALL
+const requestUrl = ('https://api.stockdata.org/v1/data/quote?symbols=AAPL&api_token=vxxRgceTwP37L5OQ4gedlvfB5oNicVcfV3LiXgOZ')
+
+router.get('/stock', (req,res)=>{
+	fetch(requestUrl)
+		.then((responseData)=>{
+			return responseData.json()
+			console.log(responseData)
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+
 router.get('/', (req, res) => {
 	Example.find({})
 		.then(examples => {
