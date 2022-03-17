@@ -1,24 +1,19 @@
 {% layout 'layout.liquid'%}
 {% block content %}
 <div>
-    <h2 class="display-6">All Examples</h2>
+    <div class="input-group">
+        <legend>Search a Stock!</legend>
+        <input type="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+        <button type="button" class="btn btn-outline-primary">search</button>
+    </div>
     <div class="row">
-        {% for example in examples %}
+        {% for stockData in stocks %}
         <div class="card" style="width: 18rem;">
-            <h5 class="card-header">{{ example.title }}</h5>
+            <h5 class="card-header">{{ stockData.name }}</h5>
             <div class="card-body">
                 <h5 class="card-title">
-                    Ready?: {{ example.ready }}
+                    Price: {{ stockData.price }}
                 </h5>
-                <p class="card-text">
-                    Body: {{ example.body }}
-                </p>
-                <p class="card-text">
-                    Amount: {{ example.amount }}
-                </p>
-                <a href="/examples/{{ example.id }}" class="btn btn-info">
-                    View {{ example.title }}
-                </a>
             </div>
         </div>
         {% endfor %}

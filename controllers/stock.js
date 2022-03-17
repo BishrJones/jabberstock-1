@@ -2,9 +2,11 @@
 const express = require('express')
 const Stock = require('../models/stock')
 const axios = require('axios')
+const { Query } = require('../models/connection')
+require("dotenv").config()
 // Create router
 const router = express.Router()
-
+const apiKey = process.env.API_KEY
 // Router Middleware
 // Authorization middleware
 // If you have some resources that should be accessible to everyone regardless of loggedIn status, this middleware can be moved, commented out, or deleted. 
@@ -19,19 +21,35 @@ router.use((req, res, next) => {
 	}
 })
 
+const reqUrlFront = 'https://api.stockdata.org/v1/data/quote?symbols='
+
+let stockSymbol = 'NKE,AAPL,TSLA'
+
+const reqUrlBack = `&api_token=${apiKey}`
+
 // Routes
 
 // index ALL
-const requestUrl = ('https://api.stockdata.org/v1/data/quote?symbols=AAPL&api_token=vxxRgceTwP37L5OQ4gedlvfB5oNicVcfV3LiXgOZ')
+// const requestUrl = 'https://api.stockdata.org/v1/data/quote?symbols=NKE&api_token=vxxRgceTwP37L5OQ4gedlvfB5oNicVcfV3LiXgOZ'
+
+const requestUrl =`${reqUrlFront}${stockSymbol}${reqUrlBack}`
+// const populateData = (data) => {resposeData}
 
 router.get('/', (req,res)=>{
+	Stock.find({})
 	axios(requestUrl)
 		.then((responseData)=>{
-			responseData
+			const stockData = responseData.data.data
 			console.log('this is the response date: \n', responseData)
 			// return responseData.json()
-			res.render('stock/index')
+			// res.render('stock/index', ) 
+			res.send(stockData)
+			
 		})
+		// .then((jsonData)=>{
+		// 	console.log('here is the data:', jsonData)
+		// 	console.log(jsonData.data)
+		// })
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})
