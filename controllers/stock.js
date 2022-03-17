@@ -23,7 +23,7 @@ router.use((req, res, next) => {
 
 const reqUrlFront = 'https://api.stockdata.org/v1/data/quote?symbols='
 
-let stockSymbol = 'NKE,AAPL,TSLA'
+let stockSymbol = 'NKE,AAPL,MSFT'
 
 const reqUrlBack = `&api_token=${apiKey}`
 
@@ -42,8 +42,8 @@ router.get('/', (req,res)=>{
 			const stockData = responseData.data.data
 			console.log('this is the response date: \n', responseData)
 			// return responseData.json()
-			// res.render('stock/index', ) 
-			res.send(stockData)
+			res.render('stock/index', {stocks: stockData}) 
+			// res.send(stockData)
 			
 		})
 		// .then((jsonData)=>{
