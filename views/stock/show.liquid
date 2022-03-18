@@ -2,11 +2,17 @@
 {% block content %}
 <div class="container-md">
     <article>
-        <h1>hi</h1>
-        <h3>{{ stocks.name }}</h2>
+        <div>
+        <h3>{{ stockResponse.name }}</h3>
 
-        <!-- {% if stockTicker == stockItems %}
-        {% endif %} -->
+        <p><strong>Symbol:</strong> {{ stockResponse.ticker }}</p>
+        <p><strong>Price:</strong> ${{ stockResponse.price }}</p>
+        <p><strong>Daily open:</strong> ${{ stockResponse.day_open }}</p>
+        <p><strong>Daily high:</strong> ${{ stockResponse.day_high }}</p>
+        <p><strong>Daily low</strong> ${{ stockResponse.day_low }}</p>
+        </div>
+
+    
     </article>
 </div>
 {% endblock %}

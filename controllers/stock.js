@@ -98,7 +98,8 @@ router.get('/:ticker', (req,res) => {
 	
 	axios(requestUrl)
 		.then((responseData)=>{
-			const stockResponse = responseData.data.data
+			const stockResponse = responseData.data.data[0]
+		
 			console.log('This is the data of stock:',stockResponse)
 			// console.log('this is the response date: \n', responseData)
 			// return responseData.json()
