@@ -35,7 +35,6 @@ const reqUrlBack = `&api_token=${apiKey}`
 const requestUrl =`${reqUrlFront}${stockSymbol}${reqUrlBack}`
 
 router.get('/', (req,res)=>{
-	Stock.find({})
 	axios(requestUrl)
 		.then((responseData)=>{
 			const stock = responseData.data.data
@@ -52,29 +51,68 @@ router.get('/', (req,res)=>{
 	
 })
 
-router.post('/stock', (req,res)=>{
-	
-	res.redirect()
+// router.post('/stock', (req,res)=>{
+// 	// req.body.owner = req.session.userId
+// 	let stockBody = req.body
+// 	let ticker = stockBody.ticker
+// 	Stock.create(stockBody)
+// 	.then((stockBody)=>{
+// 		Stock.find(ticker)
+// 		.then((ticker)=>{
+// 			res.render('stock/show', {stocks : stock})
+// 			// res.redirect('stock/show')
+// 		})
+// 	})
+
+// })
+
+// router.get('/:stocktick', (req,res) => {
+// 	const stockId = req.params.ticker
+// 	console.log(stockId)
+// 	Stock.find(stockId)
+
+// 		.then((stock)=>{
+			
+			
+// 			res.render('stock/show', {stocks: stock})
+			
+// 		})
+// 		.catch(error =>{
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
+
+router.post('/', (req, res)=>{
+	const ticker = req.body.ticker
+	res.redirect(`/stock/${ticker}`)
 })
 
 // show route
-router.get('/:stocktick', (req,res) => {
-	const stockId = req.params.ticker
-	console.log(stockId)
-	Stock.find(stockId)
+router.get('/:ticker', (req,res) => {
+	const ticker = req.params.ticker
 
-		.then((stock)=>{
-			
-			
-			res.render('stock/show', {stocks: stock})
+	const reqUrlFront = 'https://api.stockdata.org/v1/data/quote?symbols='
+
+	const reqUrlBack = `&api_token=${apiKey}`
+	const requestUrl =`${reqUrlFront}${ticker}${reqUrlBack}`
+	
+	axios(requestUrl)
+		.then((responseData)=>{
+			const stockResponse = responseData.data.data
+			console.log('This is the data of stock:',stockResponse)
+			// console.log('this is the response date: \n', responseData)
+			// return responseData.json()
+			res.render('stock/show', {stockResponse}) 
+			// res.send(stockData)
 			
 		})
-		.catch(error =>{
+		
+		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})
-
 
 })
 
 
+ 
 module.exports = router
