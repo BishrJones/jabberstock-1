@@ -7,13 +7,14 @@
         <button type="button" class="btn btn-outline-primary">search</button>
     </div>
     <div class="row">
-        {% for stockData in stocks %}
+        {% for stock in stocks %}
         <div class="card" style="width: 18rem;">
-            <h5 class="card-header">{{ stockData.name }}</h5>
+            <h5 class="card-header">{{ stock.name }}</h5>
             <div class="card-body">
                 <h5 class="card-title">
-                    Price: {{ stockData.price }}
+                    Price: {{ stock.price }}
                 </h5>
+                <a class="btn btn-primary" href="/stock/{{ stock.ticker }}" method="GET">Stock Info</a>
             </div>
         </div>
         {% endfor %}
