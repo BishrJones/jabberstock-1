@@ -1,19 +1,14 @@
 {% layout 'layout.liquid'%}
 {% block content %}
 <div>
-    <div class="input-group">
-        <legend>Search a Stock!</legend>
-        <input type="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">search</button>
-    </div>
+    {% render '../searchbar.liquid'%}
     <div class="row">
         {% for stock in stocks %}
         <div class="card" style="width: 18rem;">
-            <h5 class="card-header">{{ stock.name }}</h5>
+            <h4 class="card-header">{{ stock.name }}</h4>
             <div class="card-body">
-                <h5 class="card-title">
-                    Price: {{ stock.price }}
-                </h5>
+                <h5 class="card-title">Ticker: {{ stock.ticker }}</h5>
+                <h5 class="card-title">Price: {{ stock.price }}</h5>
                 <a class="btn btn-primary" href="/stock/{{ stock.ticker }}" method="GET">Stock Info</a>
             </div>
         </div>
