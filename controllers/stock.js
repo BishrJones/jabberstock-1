@@ -37,6 +37,7 @@ const requestUrl =`${reqUrlFront}${stockSymbol}${reqUrlBack}`
 router.get('/', (req,res)=>{
 	axios(requestUrl)
 		.then((responseData)=>{
+			
 			const stock = responseData.data.data
 			console.log('this is the response date: \n', responseData)
 			// return responseData.json()
@@ -82,9 +83,21 @@ router.get('/', (req,res)=>{
 // 		})
 // })
 
+// post route
+// this route hits /stock
 router.post('/', (req, res)=>{
+	// console log req.body
 	const ticker = req.body.ticker
-	res.redirect(`/stock/${ticker}`)
+	console.log('this is the request body',req.body)
+	// if req.body looks right add stock.create and all then's and catches (promise chain)
+	Stock.create(req.body)
+		.then((stock)=>{
+			console.log('this is returned from create', stock)
+			res.redirect(`/stock/${stock}`)
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
 })
 
 // show route

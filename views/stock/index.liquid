@@ -14,10 +14,6 @@
                 <h5 class="card-title">
                     Price: {{ stock.price }}
                 </h5>
-                <form action="/stock" method="POST">
-                    <input type="hidden" name="ticker">
-                    <input type="submit" value="test">
-                </form>
                 <a class="btn btn-primary" href="/stock/{{ stock.ticker }}" method="GET">Stock Info</a>
             </div>
         </div>

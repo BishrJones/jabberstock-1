@@ -6,6 +6,7 @@ const express = require("express")
 const middleware = require('./utils/middleware')
 const StockRouter = require('./controllers/stock')
 const UserRouter = require('./controllers/user')
+const CommentRouter = require('./controllers/comment')
 // const HomeRouter = require('./controllers/home')
 const User = require("./models/user")
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
@@ -24,6 +25,7 @@ middleware(app)
 
 app.use('/auth', UserRouter)
 app.use('/stock', StockRouter)
+app.use('/comment', CommentRouter)
 // app.use('/', HomeRouter)
 
 app.get('/', (req, res) => {

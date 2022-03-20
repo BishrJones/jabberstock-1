@@ -4,6 +4,9 @@ const mongoose = require('./connection')
 // import user model for populate
 // const User = require('./user')
 
+//  import the commentSchema
+const commentSchema = require('./comment')
+
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
 
@@ -11,11 +14,15 @@ const stockSchema = new Schema(
 	{
 		ticker: { type: String, required: true },
 		name: { type: String, required: true },
-        price: { type: Number, required: true },
-		day_open: { type: Number, required: true },
-		day_high: {type: Number, required: true},
-		day_low: {type: Number, required: true},
-
+		
+		owner: {
+			// references the type 'objectId'
+			type: Schema.Types.ObjectID,
+			// references the model: 'User'
+			ref: 'User'
+			// now that we have an owner field, let's look and replace references to the username in our fruit controllers
+		},
+		comments: [commentSchema]
 	},
 	{ timestamps: true }
 )
