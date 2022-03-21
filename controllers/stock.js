@@ -70,7 +70,7 @@ router.get('/mine', (req,res)=>{
 		console.log('favorited stocks',stocks)
 		const username = req.session.username
 		const loggedIn = req.session.loggedIn
-		res.render('stock/index', {stocks, username, loggedIn})
+		res.render('stock/userStocks', {stocks, username, loggedIn})
 	})
 	.catch(error => {
 		res.redirect(`/error?error=${error}`)
@@ -125,6 +125,8 @@ router.get('/:ticker', (req,res) => {
 		})
 
 })
+
+
 
 
  
