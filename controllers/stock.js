@@ -109,7 +109,7 @@ router.get('/:ticker', (req,res) => {
 	axios(requestUrl)
 		.then((responseData)=>{
 			const username = req.session.username
-			const loggedIn = req.session.loggedIn
+			const loggedIn = req.session.logged 
 			const stockResponse = responseData.data.data[0]
 		
 			console.log('This is the data of stock:',{stockResponse, username, loggedIn})

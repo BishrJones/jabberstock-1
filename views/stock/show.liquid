@@ -1,29 +1,32 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-md">
-    <article>
-        <div>
-            
-            <h2>{{ stockResponse.name }}</h2>
-            <h6>{{ stockResponse.ticker }}</h6>
-        <div>
-        </div>
-            <p class="bg-light"><strong>Price:</strong> ${{ stockResponse.price }}</p>
-            <p><strong>Daily open:</strong> ${{ stockResponse.day_open }}</p>
-            <p class="bg-light"><strong>Daily high:</strong> ${{ stockResponse.day_high }}</p>
-            <p><strong>Daily low:</strong> ${{ stockResponse.day_low }}</p>
-        </div>
-        <!-- form action should hit stock post route, method should be post -->
-        <!-- see fruits for example -->
-        <form action="/stock" method="POST">
-            <!-- add hidden input field for stock ticker -->
-            <!-- add hidden input field for stock name -->
-            <input hidden name="name" value="{{ stockResponse.name }}">
-            <input hidden name="ticker" value="{{ stockResponse.ticker }}">
-            <input type="submit" class="btn btn-secondary" value="Favorite">
-        </form>
+<div>
+    <div class="container-md">
+        {% render '../searchbar.liquid'%}
+        <article>
+            <div>
+                
+                <h2>{{ stockResponse.name }}</h2>
+                <h6>{{ stockResponse.ticker }}</h6>
+            <div>
+            </div>
+                <p class="index"><strong>Price:</strong> ${{ stockResponse.price }}</p>
+                <p><strong>Daily open:</strong> ${{ stockResponse.day_open }}</p>
+                <p class="index"><strong>Daily high:</strong> ${{ stockResponse.day_high }}</p>
+                <p><strong>Daily low:</strong> ${{ stockResponse.day_low }}</p>
+            </div>
+            <!-- form action should hit stock post route, method should be post -->
+            <!-- see fruits for example -->
+            <form action="/stock" method="POST">
+                <!-- add hidden input field for stock ticker -->
+                <!-- add hidden input field for stock name -->
+                <input hidden name="name" value="{{ stockResponse.name }}">
+                <input hidden name="ticker" value="{{ stockResponse.ticker }}">
+                <input id="favorite" type="submit" class="btn" value="Favorite">
+            </form>
 
-             
-    </article>
+                
+        </article>
+    </div>
 </div>
 {% endblock %}

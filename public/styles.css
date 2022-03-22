@@ -1,0 +1,37 @@
+body {
+  background-color: #fffcf2;
+}
+
+input {
+  display: inline;
+}
+.index {
+  background-color: #ccc5b9;
+}
+
+.btn {
+  background-color: #eb5e28;
+  color: #fffcf2;
+}
+
+#navbar {
+  background-color: #eb5e28;
+  color: #fffcf2;
+}
+
+#searchbar {
+  width: 400%;
+}
+
+#searchbutton {
+  display: inline;
+}
+
+#searchlegend {
+  /* margin: 0 300px 0 300px; */
+}
+
+.btn:hover {
+  background-color: #ccc5b9;
+  color: #eb5e28;
+}

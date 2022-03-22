@@ -26,7 +26,7 @@ middleware(app)
 app.use('/auth', UserRouter)
 app.use('/stock', StockRouter)
 app.use('/comment', CommentRouter)
-// app.use('/', HomeRouter)
+// app.use('/Home', HomeRouter)
 
 app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session

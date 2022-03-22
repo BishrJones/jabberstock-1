@@ -1,10 +1,12 @@
 
 {% block content %}
 <div class="input-group">
-    <form action="/stock/search" method="POST">
-        <legend>Search a Stock!</legend>
-        <input type="text" name="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        <input type="submit" value="search" class="btn btn-outline-primary">
-    </form>
+        <form class="form-inline" action="/stock/search" method="POST">
+            <legend>Search a Stock!</legend>
+            <span>
+                <input id="searchbar" type="text" name="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <input id="searchbutton" type="submit" value="search" class="btn">
+            </span>
+        </form>
 </div>
 {% endblock %}
