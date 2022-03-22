@@ -1,5 +1,6 @@
 body {
   background-color: #fffcf2;
+  color: #403d39;
 }
 
 input {
@@ -11,6 +12,10 @@ input {
 
 .btn {
   background-color: #eb5e28;
+  color: #fffcf2;
+}
+#deletebtn {
+  background-color: #403d39;
   color: #fffcf2;
 }
 

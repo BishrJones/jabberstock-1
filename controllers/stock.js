@@ -34,7 +34,10 @@ const reqUrlBack = `&api_token=${apiKey}`
 // index ALL
 
 router.get('/', (req, res)=>{
-	res.render('stock/index')
+	req.body.owner = req.session.userId
+	const username = req.session.username
+	const loggedIn = req.session.loggedIn
+	res.render('stock/index', {username, loggedIn})
 })
 
 
@@ -82,7 +85,7 @@ router.get('/mine', (req,res)=>{
 // this route hits /stock
 router.post('/', (req, res)=>{
 	// console log req.body
-	const ticker = req.body.ticker
+	// const ticker = req.body.ticker
 	req.body.owner = req.session.userId
 	console.log('this is the request body',req.body)
 	// if req.body looks right add stock.create and all then's and catches (promise chain)
@@ -107,15 +110,16 @@ router.get('/:ticker', (req,res) => {
 	const requestUrl =`${reqUrlFront}${ticker}${reqUrlBack}`
 	
 	axios(requestUrl)
-		.then((responseData)=>{
+	.then((responseData)=>{
+			req.body.owner = req.session.userId
 			const username = req.session.username
 			const loggedIn = req.session.logged 
 			const stockResponse = responseData.data.data[0]
 		
-			console.log('This is the data of stock:',{stockResponse, username, loggedIn})
+			console.log('This is the data of stock:',{stockResponse})
 			// console.log('this is the response date: \n', responseData)
 			// return responseData.json()
-			res.render('stock/show', {stockResponse}) 
+			res.render('stock/show', {stockResponse, username, loggedIn}) 
 			// res.send(stockData)
 			
 		})
@@ -124,6 +128,19 @@ router.get('/:ticker', (req,res) => {
 			res.redirect(`/error?error=${error}`)
 		})
 
+})
+
+router.delete('/:ticker', (req, res)=>{
+	const ticker = req.params.ticker
+
+	Stock.findByIdAndRemove(ticker)
+	.then((stock)=>{
+		console.log('this the rosponse from ticker', stock)
+		res.redirect('/stock/mine')
+	})
+	.catch(error => {
+		res.redirect(`/error?error=${error}`)
+	})
 })
 
 

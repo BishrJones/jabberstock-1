@@ -1,7 +1,7 @@
 {% layout "layout.liquid" %}
 {% block content %}
     <div>
-        <div class="row">
+        <div class="contiainer-md ">
             {% for stock in stocks %}
             <div class="card" style="width: 18rem;">
                 <h4 class="card-header">{{ stock.name }}</h4>
@@ -16,6 +16,9 @@
                                 <input type="text" class="form-control" name="note" placeholder="enter note">
                             </fieldset>
                             <input type="submit" class="btn btn-success" value="Add Notes">
+                        </form>
+                        <form action="/stock/{{ stock.id }}?_method=DELETE" method="POST">
+                            <input type="submit" value="delete favorite" class="btn btn-danger" id="deletebtn">
                         </form>
                     </div>
             
