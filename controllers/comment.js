@@ -28,7 +28,7 @@ router.post('/:ticker', (req, res)=>{
     })
     .then(stock =>{
         // redirect to the same page 
-        res.redirect(`/stock/${stock.ticker}`)
+        res.redirect(`/stock/${stock.id}`)
     })
     .catch(error => {
         res.redirect(`/error?error=${error}`)
