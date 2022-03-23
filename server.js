@@ -49,7 +49,7 @@ app.all('*', (req, res) => {
 //////////////////////////////
 //      App Listener        //
 //////////////////////////////
-
-app.listen(process.env.PORT, () => {
-    console.log(`listening on port ${process.env.PORT}`)
+const PORT = process.env.PORT
+app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`)
 })

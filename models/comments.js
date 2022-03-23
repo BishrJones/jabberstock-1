@@ -2,6 +2,10 @@
 const mongoose = require('./connection')
 
 const commentSchema = new mongoose.Schema({
+    subject:{
+        type: String,
+        required: true
+    },
     note:{
         type: String,
         required: true

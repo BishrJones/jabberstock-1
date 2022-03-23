@@ -113,7 +113,7 @@ router.get('/:ticker', (req,res) => {
 	.then((responseData)=>{
 			req.body.owner = req.session.userId
 			const username = req.session.username
-			const loggedIn = req.session.logged 
+			const loggedIn = req.session.loggedIn 
 			const stockResponse = responseData.data.data[0]
 		
 			console.log('This is the data of stock:',{stockResponse})

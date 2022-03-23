@@ -1,14 +1,23 @@
 {% block content %}
     <div class="card mb-4 shadow">
         <div class="card-body">
-            <p>{{ comment.note }}</p>
-            <div class="d-flex justify-content-between">
-                <small>author: {{ comment.author.username }}</small>
-                {% if comment.author == userId %}
-                    <form action="/comments/delete/{{ stockResponse.id }}/{{ comment._id }}?_method=DELETE" method="POST">
-                        <input type="submit" value="Delete comment">
+            <p>{{ stock.id }}</p>
+            <p><strong>Subject:</strong> {{ comment.subject }}</p>
+            <p><strong>Note:</strong> {{ comment.note }}</p>
+            <div class="d-flex justify-content-between ">
+                <!-- <small>author: {{ comment.author.username }}</small> -->
+                <!-- <div>
+                    <form action="/comments/id">
+                        <input  class="btn" type="submit" value="Edit">
                     </form>
-                {% endif %}
+                </div> -->
+                <div class="btn-group">
+                    <a href="/comment/{{ comment.id }}/edit" class="btn">Edit</a>
+                        <form action="/comment/delete/{{ comment.id }}?_method=DELETE" method="POST">
+                            <input id="deletenote" class="btn" type="submit" value="Delete note">
+                        </form>
+                    
+                </div>
             </div>
         </div>
     </div>

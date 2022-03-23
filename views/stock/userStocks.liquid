@@ -1,19 +1,22 @@
 {% layout "layout.liquid" %}
 {% block content %}
     <div>
+        <h3>My stocks</h3>
         <div class="contiainer-md ">
             {% for stock in stocks %}
-            <div class="card" style="width: 18rem;">
+            <div class="card mx-auto" style="width: 80%;">
                 <h4 class="card-header">{{ stock.name }}</h4>
                 <div class="card-body">
-                    <h5 class="card-title">Ticker:{{ stock.ticker }}</h5>
+                    <h5 class="card-title">Ticker: {{ stock.ticker }}</h5>
                     <!-- <h5 class="card-title">Price: {{ stock.price }}</h5> -->
                     <a class="btn btn-primary" href="/stock/{{ stock.ticker }}" method="GET">Stock Info</a>
-                    <div class="col-md-6">
-                        <form action="/comments/{{ stock.ticker }}" method="POST">
+                    <div class="col-md-6 ">
+                        <form action="/comment/{{ stock.id }}" method="POST">
                             <fieldset>
+                                <label class="form-label">Subject:</label>
+                                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
                                 <label class="form-label">Add note: </label>
-                                <input type="text" class="form-control" name="note" placeholder="enter note">
+                                <input type="text" class="form-control" name="note" placeholder="enter note" required>
                             </fieldset>
                             <input type="submit" class="btn btn-success" value="Add Notes">
                         </form>

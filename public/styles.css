@@ -6,6 +6,12 @@ body {
 input {
   display: inline;
 }
+
+h3 {
+  text-align: center;
+}
+.card {
+}
 .index {
   background-color: #ccc5b9;
 }
@@ -15,6 +21,10 @@ input {
   color: #fffcf2;
 }
 #deletebtn {
+  background-color: #403d39;
+  color: #fffcf2;
+}
+#deletenote {
   background-color: #403d39;
   color: #fffcf2;
 }
