@@ -8,7 +8,7 @@
             <h4 class="card-header">{{ stock.name }}</h4>
             <div class="card-body">
                 <h5 class="card-title">Ticker: {{ stock.ticker }}</h5>
-                <h5 class="card-title">Price: {{ stock.price }}</h5>
+                <h5 class="card-title">Price: ${{ stock.price }}</h5>
                 <a class="btn " href="/stock/{{ stock.ticker }}" method="GET">Stock Info</a>
             </div>
         </div>
