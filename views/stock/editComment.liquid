@@ -4,9 +4,9 @@
     <h3>Edit note</h3>
     <form action="/comment/{{ comment.id }}?_method=PUT" method="POST">
         <label for="">Subject:</label>
-        <input type="text" name="" id="">
+        <input type="text" name="subject" value="{{comment.subject}}">
         <label for="">Note:</label>
-        <input type="text" value="">
+        <input type="text" value="{{comment.note}}">
         <input type="submit" value="Update note" name="" class="btn btn-success">
     </form>
 </div>

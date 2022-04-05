@@ -5,17 +5,26 @@
         {% if loggedIn %}
         <a href="/stock/mine" class="nav-link text-light">Hello, welcome back {{ username }}! </a>
         {% endif %}
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {% if loggedIn %}
-                <a href="/stock" class="nav-link text-light">Search Stocks</a>
-                <a href="/stock/mine" class="nav-link text-light">My Stocks</a>
-                <a href="/auth/logout" class="nav-link text-light">Log Out</a>
-            {% else %}
-                <a href="/auth/signup" class="nav-link text-light">Sign Up</a>
-                <a href="/auth/login" class="nav-link text-light">Sign In</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/stock" class="nav-link text-light">Search Stocks</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a href="/stock/mine" class="nav-link text-light">My Stocks</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a href="/auth/logout" class="nav-link text-light">Log Out</a>
+                    </li> 
+                    {% else %}
+                    <a href="/auth/signup" class="nav-link text-light">Sign Up</a>
+                    <a href="/auth/login" class="nav-link text-light">Sign In</a>
+                </ul>
             {% endif %}
         </div>
     </div>

@@ -42,15 +42,17 @@ router.post('/:id', (req, res)=>{
 // Delete route
 router.delete('/delete/:commId', (req, res)=>{
     const ticker = req.params.id
-    console.log(commId)
     const commId = req.params.commId
+    console.log('this is the ticker id', ticker)
+    console.log('this is the comm id', commId)
     // find the stock
     Stock.findById(ticker)
+
         .then(stock =>{
             // 
 
             const theComment = stock.comments.id(commId)
-            console.log('this is comments',theComment)
+            // console.log('this is comments',theComment)
             
                 // remove the comment with .remove 
             theComment.remove()
@@ -66,6 +68,7 @@ router.delete('/delete/:commId', (req, res)=>{
         })
 })
 
+// render the edit page
 router.get('/:id/edit', (req, res)=>{
     const username = req.session.username
 	const loggedIn = req.session.loggedIn
