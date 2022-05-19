@@ -43,7 +43,7 @@ router.get('/', (req, res)=>{
 
 router.post('/search', (req,res)=>{
 	// let stockSymbol = 'NKE'
-	console.log('this is the search body',req.body)
+	console.log('this is the search body', req.body)
 	stockSymbol = req.body.search
 	const requestUrl =`${reqUrlFront}${stockSymbol}${reqUrlBack}`
 	axios(requestUrl)
