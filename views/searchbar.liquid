@@ -1,11 +1,16 @@
 
 {% block content %}
-<div class="input-group">
-        <form class="form-inline" action="/stock/search" method="POST">
+<div style="
+display: flex;
+justify-content: center;
+text-align: center;
+align-items: center;
+" class="input-group">
+        <form action="/stock/search" method="POST">
             <legend>Search a Stock!</legend>
-            <span>
+            <span class=" row justify-content-center">
                 <input id="searchbar" type="text" name="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <input id="searchbutton" type="submit" value="search" class="btn">
+                <input id="searchbutton" type="submit" value="search" class="btn col-auto my-1">
             </span>
         </form>
 </div>
