@@ -2,9 +2,9 @@
 {% block content %}
 <div class="container-md">
     {% render '../searchbar.liquid'%}
-    <div class="row">
+    <div class="row ">
         {% for stock in stocks %}
-        <div class="card" style="width: 18rem;">
+        <div class="card mx-auto" style="width: 18rem;">
             <h4 class="card-header">{{ stock.name }}</h4>
             <div class="card-body">
                 <h5 class="card-title">Ticker: {{ stock.ticker }}</h5>
