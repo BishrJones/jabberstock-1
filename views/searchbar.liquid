@@ -5,9 +5,11 @@ display: flex;
 justify-content: center;
 text-align: center;
 align-items: center;
+margin-top: 2em;
 " class="input-group">
         <form action="/stock/search" method="POST">
-            <legend>Search a Stock!</legend>
+            <legend style="margin-bottom: auto;" >Search a Stock!</legend>
+            <small>Search up to 3 stocks at a time.</small>
             <span class=" row justify-content-center">
                 <input id="searchbar" type="text" name="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                 <input id="searchbutton" type="submit" value="search" class="btn col-auto my-1">
